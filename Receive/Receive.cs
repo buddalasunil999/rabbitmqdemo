@@ -14,7 +14,7 @@ namespace Receive
             {
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare(queue: "hello",
+                    channel.QueueDeclare("hello",
                         durable: false,
                         exclusive: false,
                         autoDelete: false,
