@@ -14,7 +14,7 @@ namespace Receive
             {
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare(queue: "hello",
+                    channel.QueueDeclare("hello",
                         durable: false,
                         exclusive: false,
                         autoDelete: false,
@@ -23,9 +23,9 @@ namespace Receive
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += Consumer_Received;
 
-                    channel.BasicConsume(queue: "hello",
-                        autoAck: true,
-                        consumer: consumer);
+                    channel.BasicConsume("hello",
+                        true,
+                        consumer);
 
                     Console.ReadKey();
                 }
